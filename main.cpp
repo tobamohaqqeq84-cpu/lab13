@@ -4,15 +4,15 @@
 
 #include <iostream>
 #include <fstream>      
-#include <array>        // using std::array
+#include <vector>        // using std::vector
 #include <algorithm>    
-#include <numeric>     
+#include <numeric>     //sum
 using namespace std;
 
 const int DAYS = 30;   // we are tracking 30 days in a month
 
 int main() {
-    array<int, DAYS> calories;  // array to store calories burned each day
+    vector<int> calories(DAYS);  // vector to store calories burned each day
 
     // this openes the file
     ifstream infile("calories.txt");
@@ -27,7 +27,7 @@ int main() {
     }
     infile.close(); // don’t forget to close file
 
-    // checking array size
+    // checking vector size
     cout << "1. Number of days recorded: " << calories.size() << endl;
 
     // printing all the values (whole month)
@@ -45,7 +45,7 @@ int main() {
 
     // sorting ascending
     sort(calories.begin(), calories.end());
-    cout << "9. Sorted ascending: ";
+    cout << "9. Sorted: ";
     for (int val : calories) cout << val << " ";
     cout << endl;
 
@@ -75,22 +75,21 @@ int main() {
          << accumulate(calories.begin(), calories.end(), 0) / (double)calories.size() 
          << endl;
 
-    // make some other arrays and fill them
-    array<int, 5> tens;
+    // make some other vector and fill them
+    vector<int> tens(5,10);
     tens.fill(10);
-    cout << "16. 5-element array of 10's: ";
+    cout << "16. vector of 10: ";
     for (int val : tens) cout << val << " ";
     cout << endl;
 
-    array<int, 5> twenties;
-    fill(twenties.begin(), twenties.end(), 20);
-    cout << "17. 5-element array of 20's: ";
+    vector<int> twenties(5,20);
+    cout << "17. vectors of 20: ";
     for (int val : twenties) cout << val << " ";
     cout << endl;
 
     // swap the two arrays
     tens.swap(twenties);
-    cout << "18. After swap, the tens array now has: ";
+    cout << "18. After swap, tens: ";
     for (int val : tens) cout << val << " ";
     cout << endl;
 
