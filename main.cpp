@@ -77,7 +77,6 @@ int main() {
 
     // make some other vector and fill them
     vector<int> tens(5,10);
-    tens.fill(10);
     cout << "16. vector of 10: ";
     for (int val : tens) cout << val << " ";
     cout << endl;
